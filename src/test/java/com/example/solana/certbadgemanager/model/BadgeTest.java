@@ -15,7 +15,7 @@ class BadgeTest {
     @Test
     void testSettersAndGetters() {
         Badge badge = new Badge();
-        badge.setId(1L);
+        badge.setId(String.valueOf(1L));
         badge.setName("Achievement Badge");
         badge.setDescription("Awarded for exceptional achievements");
 
@@ -27,7 +27,7 @@ class BadgeTest {
     @Test
     void testToString() {
         Badge badge = new Badge();
-        badge.setId(1L);
+        badge.setId(String.valueOf(1L));
         badge.setName("Achievement Badge");
 
         String expected = "Badge{id=1, name='Achievement Badge'}";

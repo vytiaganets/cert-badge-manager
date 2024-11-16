@@ -16,19 +16,19 @@ class CertificateTest {
     @Test
     void testSettersAndGetters() {
         Certificate certificate = new Certificate();
-        certificate.setId(1L);
+        certificate.setId(String.valueOf(1L));
         certificate.setTitle("Completion Certificate");
-        certificate.setRecipient("John Doe");
+        certificate.setAwardedTo("2024-11-15");
 
         assertEquals(1L, certificate.getId());
         assertEquals("Completion Certificate", certificate.getTitle());
-        assertEquals("John Doe", certificate.getRecipient());
+        assertEquals("John Doe", certificate.getAwardedTo());
     }
 
     @Test
     void testToString() {
         Certificate certificate = new Certificate();
-        certificate.setId(1L);
+        certificate.setId(String.valueOf(1L));
         certificate.setTitle("Completion Certificate");
 
         String expected = "Certificate{id=1, title='Completion Certificate'}";
