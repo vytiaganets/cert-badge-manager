@@ -1,5 +1,6 @@
 package com.example.solana.certbadgemanager.model;
 
+import com.example.solana.certbadgemanager.dto.BadgeRequestDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,4 +24,18 @@ public class Badge {
     private String awardedTo;
     private LocalDateTime awardedDate;
     private String blockchainTransactionId;
+
+    public Badge(String name, String description, LocalDateTime awardedDate) {
+        this.name = name;
+        this.description = description;
+        this.awardedDate = awardedDate;
+    }
+
+    public Badge(String name, String description, String awardedTo) {
+        this.name = name;
+        this.description = description;
+        this.awardedTo = awardedTo;
+    }
+
+
 }

@@ -1,8 +1,12 @@
 package com.example.solana.certbadgemanager.dto;
 
-import lombok.Data;
+import lombok.*;
 
 @Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class BadgeResponseDTO {
     private String id;
     private String name;
@@ -10,6 +14,8 @@ public class BadgeResponseDTO {
     private String userId;
     private String blockchainTransactionId;
     private String status;
+    private String issuedTo;
+    private String issueDate;
 
     public BadgeResponseDTO(String id, String name, String description) {
         this.id = id;
@@ -17,7 +23,4 @@ public class BadgeResponseDTO {
         this.description = description;
     }
 
-    public BadgeResponseDTO() {
-
-    }
 }

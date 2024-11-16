@@ -32,4 +32,9 @@ public class CertificateService {
                 "Certificate not found"));
         return new CertificateResponseDTO(certificate.getId(), certificate.getTitle(), certificate.getDescription());
     }
+
+    public void deleteCertificate(Long id) {
+        CertificateResponseDTO certificate = getCertificateById(String.valueOf(id));
+        certificateRepository.delete(certificate);
+    }
 }

@@ -22,4 +22,10 @@ public class Certificate {
     private String awardedTo;
     private LocalDateTime awardedDate;
     private String blockchainTransactionId;
+
+    public Certificate(String title, String description, String awardedTo) {
+        this.title = title;
+        this.description = description;
+        this.awardedTo = awardedTo;
+    }
 }
