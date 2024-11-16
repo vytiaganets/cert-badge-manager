@@ -1,5 +1,7 @@
 package com.example.solana.certbadgemanager.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,8 +13,9 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Getter
 @Setter
-
+@Entity
 public class Certificate {
+    @Id
     private String id;
     private String title;
     private String description;

@@ -23,10 +23,10 @@ public class BlockchainService {
         return badge;
     }
 
-    public Certificate eadCertificateFromBlockchain(String certificateId){
+    public Certificate readCertificateFromBlockchain(String certificateId){
         Certificate certificate = new Certificate();
         certificate.setId(certificateId);
-        certificate.setName("Mock Certificate Name");
+        certificate.setTitle("Mock Certificate Name");
         return certificate;
     }
 }

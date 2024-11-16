@@ -16,4 +16,8 @@ public class BadgeResponseDTO {
         this.name = name;
         this.description = description;
     }
+
+    public BadgeResponseDTO() {
+
+    }
 }
