@@ -3,6 +3,7 @@ package com.example.solana.certbadgemanager.mapper;
 import com.example.solana.certbadgemanager.dto.*;
 import com.example.solana.certbadgemanager.model.Badge;
 import com.example.solana.certbadgemanager.model.Certificate;
+import com.example.solana.certbadgemanager.model.Tokenomics;
 import com.example.solana.certbadgemanager.model.User;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +13,11 @@ import org.springframework.stereotype.Component;
 public class Mappers {
 
     private final ModelMapper modelMapper;
+
     public Mappers(ModelMapper modelMapper) {
         this.modelMapper = modelMapper;
     }
+
     public BadgeResponseDTO toBadgeResponseDto(Badge badge) {
         return modelMapper.map(badge, BadgeResponseDTO.class);
     }
@@ -46,5 +49,13 @@ public class Mappers {
 
     public CertificateResponseDTO toCertificateResponseDTO(Certificate certificate) {
         return modelMapper.map(certificate, CertificateResponseDTO.class);
+    }
+
+    public Tokenomics toEntity(TokenomicsRequestDTO requestDTO) {
+        return modelMapper.map(requestDTO, Tokenomics.class);
+    }
+
+    public TokenomicsResponseDTO toResponseDTO(Tokenomics tokenomics) {
+        return modelMapper.map(tokenomics, TokenomicsResponseDTO.class);
     }
 }

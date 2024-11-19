@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="1" author="Andrii">
+        <createTable tableName="certificates">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="certificate_name" type="VARCHAR(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="recipient" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="issue_date" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="expiry_date" type="DATE"/>
+            <column name="issued_by" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(500)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2" author="Andrii">
+        <insert tableName="certificates">
+            <column name="certificate_name" value="Java Programming Certificate"/>
+            <column name="recipient" value="John Doe"/>
+            <column name="issue_date" value="2024-01-10"/>
+            <column name="expiry_date" value="2026-01-10"/>
+            <column name="issued_by" value="Tech Academy"/>
+            <column name="description" value="Certificate awarded for completing the Java Programming Course."/>
+        </insert>
+        <insert tableName="certificates">
+            <column name="certificate_name" value="Blockchain Developer Certificate"/>
+            <column name="recipient" value="Jane Smith"/>
+            <column name="issue_date" value="2024-02-01"/>
+            <column name="expiry_date" value="2027-02-01"/>
+            <column name="issued_by" value="Blockchain Academy"/>
+            <column name="description" value="Certificate awarded for proficiency in blockchain development."/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>
