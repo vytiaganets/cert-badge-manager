@@ -4,17 +4,17 @@ import com.example.solana.certbadgemanager.dto.*;
 import com.example.solana.certbadgemanager.model.Badge;
 import com.example.solana.certbadgemanager.model.Certificate;
 import com.example.solana.certbadgemanager.model.User;
-import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-@RequiredArgsConstructor
 public class Mappers {
 
     private final ModelMapper modelMapper;
-
-
+    public Mappers(ModelMapper modelMapper) {
+        this.modelMapper = modelMapper;
+    }
     public BadgeResponseDTO toBadgeResponseDto(Badge badge) {
         return modelMapper.map(badge, BadgeResponseDTO.class);
     }

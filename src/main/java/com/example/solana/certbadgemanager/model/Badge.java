@@ -37,5 +37,7 @@ public class Badge {
         this.awardedTo = awardedTo;
     }
 
-
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 }

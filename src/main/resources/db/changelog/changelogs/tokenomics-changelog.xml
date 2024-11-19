@@ -1,0 +1,45 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext
+        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="1" author="Andrii">
+        <createTable tableName="tokenomics">
+            <column name="id" type="BIGINT">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="token_name" type="VARCHAR(255)">
+                <constraints nullable="false" unique="true" />
+            </column>
+            <column name="total_supply" type="DECIMAL(20,6)">
+                <constraints nullable="false" />
+            </column>
+            <column name="circulating_supply" type="DECIMAL(20,6)">
+                <constraints nullable="false" />
+            </column>
+            <column name="reserved_for_rewards" type="DECIMAL(20,6)">
+                <constraints nullable="false" />
+            </column>
+            <column name="transaction_fee_percentage" type="DECIMAL(5,2)">
+                <constraints nullable="false" />
+            </column>
+            <column name="description" type="TEXT" />
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2" author="Andrii">
+        <insert tableName="tokenomics">
+            <column name="id" valueNumeric="1" />
+            <column name="token_name" value="MyToken" />
+            <column name="total_supply" valueNumeric="1000000.000000" />
+            <column name="circulating_supply" valueNumeric="500000.000000" />
+            <column name="reserved_for_rewards" valueNumeric="200000.000000" />
+            <column name="transaction_fee_percentage" valueNumeric="2.50" />
+            <column name="description" value="This is a test token for demonstration purposes." />
+        </insert>
+    </changeSet>
+</databaseChangeLog>

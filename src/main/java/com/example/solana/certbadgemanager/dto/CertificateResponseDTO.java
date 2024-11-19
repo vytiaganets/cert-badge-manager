@@ -8,6 +8,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CertificateResponseDTO {
+
     private String id;
     private String title;
     private String description;
@@ -17,7 +18,6 @@ public class CertificateResponseDTO {
     private String status;
     private String issuedTo;
     private String issueDate;
-
     public CertificateResponseDTO(String id, String title, String description) {
         this.id = id;
         this.title = title;
