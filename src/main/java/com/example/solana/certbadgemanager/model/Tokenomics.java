@@ -30,7 +30,6 @@ public class Tokenomics {
     private String description;
 
     public Tokenomics() {
-        // Default constructor
     }
 
     public Tokenomics(String tokenName, BigDecimal totalSupply, BigDecimal circulatingSupply,
@@ -43,7 +42,6 @@ public class Tokenomics {
         this.description = description;
     }
 
-    // Getters and Setters
 
     public Long getId() {
         return id;

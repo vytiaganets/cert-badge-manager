@@ -1,12 +1,9 @@
 package com.example.solana.certbadgemanager.service;
 
-package com.example.tokenomics.service;
-
+import com.example.solana.certbadgemanager.dto.*;
 import com.example.solana.certbadgemanager.repository.InvestorRepository;
-import com.example.tokenomics.dto.InvestorRequestDTO;
-import com.example.tokenomics.dto.InvestorResponseDTO;
-import com.example.tokenomics.entity.Investor;
-import com.example.tokenomics.repository.InvestorRepository;
+import com.example.solana.certbadgemanager.model.Investor;
+import com.example.solana.certbadgemanager.repository.InvestorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -80,5 +77,21 @@ public class InvestmentService {
                 investor.getInvestmentAmount(),
                 investor.getDescription()
         );
+    }
+
+    public List<InvestmentResponseDTO> getInvestmentsByInvestorId(Long investorId) {
+        return null;
+    }
+
+    public InvestmentAllocationResponseDTO getInvestmentAllocationById(Long allocationId) {
+        return null;
+    }
+
+    public List<InvestmentAllocationResponseDTO> getAllInvestmentAllocations() {
+        return null;
+    }
+
+    public InvestmentAllocationResponseDTO createInvestmentAllocation(InvestmentAllocationRequestDTO investmentAllocationRequestDTO) {
+        return null;
     }
 }

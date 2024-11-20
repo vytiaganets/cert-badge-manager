@@ -1,7 +1,9 @@
 package com.example.solana.certbadgemanager.dto;
 
-import java.math.BigDecimal;
+import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+@NoArgsConstructor
 public class InvestorResponseDTO {
 
     private Long id;

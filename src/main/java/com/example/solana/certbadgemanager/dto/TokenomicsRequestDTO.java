@@ -5,6 +5,8 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import lombok.Data;
 
+import java.math.BigDecimal;
+
 @Data
 public class TokenomicsRequestDTO {
 
@@ -13,19 +15,19 @@ public class TokenomicsRequestDTO {
 
     @NotNull(message = "Total supply must not be null.")
     @Positive(message = "Total supply must be a positive value.")
-    private Double totalSupply;
+    private BigDecimal totalSupply;
 
     @NotNull(message = "Circulating supply must not be null.")
     @Positive(message = "Circulating supply must be a positive value.")
-    private Double circulatingSupply;
+    private BigDecimal circulatingSupply;
 
     @NotNull(message = "Reserved for rewards must not be null.")
     @Positive(message = "Reserved for rewards must be a positive value.")
-    private Double reservedForRewards;
+    private BigDecimal reservedForRewards;
 
     @NotNull(message = "Transaction fee percentage must not be null.")
     @Positive(message = "Transaction fee percentage must be a positive value.")
-    private Double transactionFeePercentage;
+    private BigDecimal transactionFeePercentage;
 
     private String description;
 
@@ -37,35 +39,35 @@ public class TokenomicsRequestDTO {
         this.tokenName = tokenName;
     }
 
-    public Double getTotalSupply() {
+    public @NotNull(message = "Total supply must not be null.") @Positive(message = "Total supply must be a positive value.") BigDecimal getTotalSupply() {
         return totalSupply;
     }
 
-    public void setTotalSupply(Double totalSupply) {
+    public void setTotalSupply(BigDecimal totalSupply) {
         this.totalSupply = totalSupply;
     }
 
-    public Double getCirculatingSupply() {
+    public @NotNull(message = "Circulating supply must not be null.") @Positive(message = "Circulating supply must be a positive value.") BigDecimal getCirculatingSupply() {
         return circulatingSupply;
     }
 
-    public void setCirculatingSupply(Double circulatingSupply) {
+    public void setCirculatingSupply(BigDecimal circulatingSupply) {
         this.circulatingSupply = circulatingSupply;
     }
 
-    public Double getReservedForRewards() {
+    public @NotNull(message = "Reserved for rewards must not be null.") @Positive(message = "Reserved for rewards must be a positive value.") BigDecimal getReservedForRewards() {
         return reservedForRewards;
     }
 
-    public void setReservedForRewards(Double reservedForRewards) {
+    public void setReservedForRewards(BigDecimal reservedForRewards) {
         this.reservedForRewards = reservedForRewards;
     }
 
-    public Double getTransactionFeePercentage() {
+    public @NotNull(message = "Transaction fee percentage must not be null.") @Positive(message = "Transaction fee percentage must be a positive value.") BigDecimal getTransactionFeePercentage() {
         return transactionFeePercentage;
     }
 
-    public void setTransactionFeePercentage(Double transactionFeePercentage) {
+    public void setTransactionFeePercentage(BigDecimal transactionFeePercentage) {
         this.transactionFeePercentage = transactionFeePercentage;
     }
 

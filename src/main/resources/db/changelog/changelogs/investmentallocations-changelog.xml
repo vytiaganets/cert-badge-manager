@@ -23,6 +23,9 @@
                 <constraints nullable="false"/>
             </column>
             <column name="notes" type="TEXT"/>
+            <column name="tokenomics_id" type="BIGINT">
+                <constraints nullable="false" foreignKeyName="fk_tokenomics_id" references="tokenomics(id)"/>
+            </column>
         </createTable>
     </changeSet>
 
@@ -32,7 +35,8 @@
             <column name="allocation_category" value="Research and Development"/>
             <column name="allocated_amount" value="40000.00"/>
             <column name="allocation_date" value="2024-02-01"/>
-            <column name="notes" value="Initial allocation for R&D projects."/>
+            <column name="notes" value="Initial allocation for R&amp;D projects."/>
+            <column name="tokenomics_id" value="1"/>
         </insert>
         <insert tableName="investment_allocations">
             <column name="investor_id" value="2"/>
@@ -40,6 +44,7 @@
             <column name="allocated_amount" value="20000.00"/>
             <column name="allocation_date" value="2024-02-15"/>
             <column name="notes" value="Allocation for online and offline campaigns."/>
+            <column name="tokenomics_id" value="1"/>
         </insert>
     </changeSet>
 

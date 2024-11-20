@@ -84,4 +84,7 @@ public class TokenomicsService {
         responseDTO.setDescription(tokenomics.getDescription());
         return responseDTO;
     }
+
+    public void createOrUpdateTokenomicsData() {
+    }
 }

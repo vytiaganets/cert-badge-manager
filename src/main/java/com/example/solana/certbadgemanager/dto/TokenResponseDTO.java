@@ -23,7 +23,6 @@ public class TokenResponseDTO {
         this.description = description;
     }
 
-    // Getters and Setters
     public Long getId() {
         return id;
     }

@@ -6,12 +6,12 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
         http://www.liquibase.org/xml/ns/dbchangelog-ext https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
+    <include file="db/changelog/changelogs/tokenomics-changelog.xml"/>
     <include file="db/changelog/changelogs/badges-changelog.xml"/>
     <include file="db/changelog/changelogs/certificates-changelog.xml"/>
-    <include file="db/changelog/changelogs/investmentallocations-changelog.xml"/>
-    <include file="db/changelog/changelogs/investors-changelog.xml"/>
-    <include file="db/changelog/changelogs/tokenomics-changelog.xml"/>
     <include file="db/changelog/changelogs/tokens-changelog.xml"/>
+    <include file="db/changelog/changelogs/investors-changelog.xml"/>
+    <include file="db/changelog/changelogs/investmentallocations-changelog.xml"/>
     <include file="db/changelog/changelogs/users-changelog.xml"/>
 
 </databaseChangeLog>

@@ -1,7 +1,5 @@
 package com.example.solana.certbadgemanager.model;
 
-package com.example.tokenomics.model;
-
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

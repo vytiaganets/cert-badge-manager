@@ -28,7 +28,6 @@ public class TokenRequestDTO {
 
     private String description;
 
-    // Getters and Setters
     public String getTokenName() {
         return tokenName;
     }

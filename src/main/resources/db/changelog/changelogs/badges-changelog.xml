@@ -7,7 +7,7 @@
 
     <changeSet id="1" author="Andrii">
         <createTable tableName="badges">
-            <column name="id" type="BIGINT" autoIncrement="true">
+            <column name="id" type="VARCHAR(255)">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="badge_name" type="VARCHAR(255)">

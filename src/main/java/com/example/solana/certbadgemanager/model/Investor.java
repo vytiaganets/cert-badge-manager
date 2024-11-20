@@ -1,8 +1,7 @@
 package com.example.solana.certbadgemanager.model;
 
-package com.example.tokenomics.model;
-
 import jakarta.persistence.*;
+import java.math.BigDecimal;
 import java.util.List;
 
 @Entity
@@ -72,5 +71,19 @@ public class Investor {
 
     public void setInvestmentAllocations(List<InvestmentAllocation> investmentAllocations) {
         this.investmentAllocations = investmentAllocations;
+    }
+
+    public void setInvestmentAmount(BigDecimal investmentAmount) {
+    }
+
+    public void setDescription(String description) {
+    }
+
+    public BigDecimal getInvestmentAmount() {
+        return null;
+    }
+
+    public String getDescription() {
+        return null;
     }
 }

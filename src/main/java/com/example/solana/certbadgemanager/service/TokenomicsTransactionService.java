@@ -1,31 +1,36 @@
 package com.example.solana.certbadgemanager.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.TransactionManager;
+import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 @Service
 public class TokenomicsTransactionService {
 
-    private final TransactionManager transactionManager;
-    private final TokenomicsService tokenomicsService;
+    @Autowired
+    private PlatformTransactionManager transactionManager;
 
-    public TokenomicsTransactionService(TransactionManager transactionManager, TokenomicsService tokenomicsService) {
-        this.transactionManager = transactionManager;
-        this.tokenomicsService = tokenomicsService;
-    }
+    @Autowired
+    private TokenomicsService tokenomicsService;
 
     public void executeTransactionalOperation() {
-        TransactionStatus status = transactionManager.beginTransaction();
+
+        DefaultTransactionDefinition def = new DefaultTransactionDefinition();
+        def.setName("TokenomicsTransaction");
+        def.setPropagationBehavior(DefaultTransactionDefinition.PROPAGATION_REQUIRED); // Транзакція буде використовувати існуючу, якщо вона є
+
+        TransactionStatus status = transactionManager.getTransaction(def);
         try {
 
             tokenomicsService.createOrUpdateTokenomicsData();
 
 
-            transactionManager.commitTransaction(status);
+            transactionManager.commit(status);
         } catch (Exception e) {
 
-            transactionManager.rollbackTransaction(status);
+            transactionManager.rollback(status);
             throw e;
         }
     }
