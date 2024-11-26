@@ -43,12 +43,10 @@ public class ApiConfig {
     }
     @Bean
     public WebMvcConfigurer corsConfigurer(){
-        return new WebMvcConfigurer(){
+        return new WebMvcConfigurer() {
             @Override
-            public void addCorsMappings(CorsRegistry registry){
-                registry.addMapping("/api/**")
-                        .allowedOrigins("http://loccalhost:3000")
-                        .allowedMethods("GET", "POST", "PUT", "DELETE");
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/**").allowedOrigins("*");
             }
         };
     }
