@@ -2,50 +2,73 @@ package com.example.solana.certbadgemanager.util;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.security.SignatureException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
-import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Collections;
 
 @Component
 public class JwtAuthFilter extends OncePerRequestFilter {
 
     private final String SECRET_KEY = "mySecretKey";
 
-
+    @Override
     protected void doFilterInternal(HttpServletRequest request,
                                     HttpServletResponse response,
                                     FilterChain filterChain) throws ServletException, IOException {
-
+        // Obtaining a token from a request
         String token = getJwtFromRequest(request);
 
-        if (token != null && validateToken(token)) {
-            Claims claims = getClaimsFromToken(token);
-            String username = claims.getSubject();
-            // Authentication authentication = new UsernamePasswordAuthenticationToken(username, null, Collections.emptyList());
-            // SecurityContextHolder.getContext().setAuthentication(authentication);
+        try {
+            if (token != null && validateToken(token)) {
+                // We receive user data from the token
+                Claims claims = getClaimsFromToken(token);
+                String username = claims.getSubject();
+
+                // We create UserDetails (or download from the database if necessary)
+                UserDetails userDetails = new User(username, "", Collections.emptyList());
+
+                // Add authentication to the SecurityContext
+                UsernamePasswordAuthenticationToken authentication =
+                        new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+                SecurityContextHolder.getContext().setAuthentication(authentication);
+            }
+        } catch (SignatureException ex) {
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            response.getWriter().write("Invalid JWT signature");
+            return;
         }
 
-        filterChain.doFilter(request, response); // передаємо запит далі по ланцюгу
+        // We pass the request on through the filters
+        filterChain.doFilter(request, response);
     }
 
     private String getJwtFromRequest(HttpServletRequest request) {
         String bearerToken = request.getHeader("Authorization");
         if (bearerToken != null && bearerToken.startsWith("Bearer ")) {
-            return bearerToken.substring(7); // повертає токен без "Bearer "
+            return bearerToken.substring(7); // Видаляємо "Bearer " для отримання токена
         }
         return null;
     }
 
     private boolean validateToken(String token) {
         try {
-            Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token); // перевірка валідності токена
+            Jwts.parser()
+                    .setSigningKey(SECRET_KEY)
+                    .parseClaimsJws(token);
             return true;
         } catch (Exception e) {
-            return false; // токен не валідний
+            return false; // Токен недійсний
         }
     }
 
@@ -54,10 +77,5 @@ public class JwtAuthFilter extends OncePerRequestFilter {
                 .setSigningKey(SECRET_KEY)
                 .parseClaimsJws(token)
                 .getBody();
-    }
-
-    @Override
-    protected void doFilterInternal(jakarta.servlet.http.HttpServletRequest request, jakarta.servlet.http.HttpServletResponse response, jakarta.servlet.FilterChain filterChain) throws jakarta.servlet.ServletException, IOException {
-
     }
 }

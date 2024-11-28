@@ -4,6 +4,7 @@ import com.example.solana.certbadgemanager.dto.AuthRequest;
 import com.example.solana.certbadgemanager.dto.AuthResponse;
 import com.example.solana.certbadgemanager.dto.RegisterRequest;
 import com.example.solana.certbadgemanager.service.AuthService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +19,7 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<String> register(@RequestBody RegisterRequest request) {
+    public ResponseEntity<String> register(@Valid @RequestBody RegisterRequest request) {
         authService.register(request);
         return ResponseEntity.ok("User registered successfully!");
     }

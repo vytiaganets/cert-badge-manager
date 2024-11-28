@@ -41,7 +41,7 @@ public class ApiConfig {
     public ModelMapper modelMapper() {
         return new ModelMapper();
     }
-    @Bean
+    @Bean(name = "apiCorsConfigurer")
     public WebMvcConfigurer corsConfigurer(){
         return new WebMvcConfigurer() {
             @Override
