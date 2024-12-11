@@ -14,60 +14,62 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig{
+/*
+    private final JwtAuthFilter jwtAuthFilter;
 
-   // private final JwtAuthFilter jwtAuthFilter;
+    public SecurityConfig(JwtAuthFilter jwtAuthFilter) {
+        this.jwtAuthFilter = jwtAuthFilter;
+    }
 
-    //public SecurityConfig(JwtAuthFilter jwtAuthFilter) {
-//        this.jwtAuthFilter = jwtAuthFilter;
-//    }
-
-//    @Bean
-//    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-//        http
-//                .csrf().disable()
-//                .authorizeHttpRequests(auth -> auth
-//                        .requestMatchers(
-//                        "/",
-//                        "/api/auth/**",
-//                        "/css/**",
-//                        "/js/**",
-//                        "/actuator/**",
-//                        "/register",
-//                        "/actuator",
-//                        "/login",
-//                                "/static/**",
-//                                        "/v3/api-docs/**", // OpenAPI JSON
-//                                        "/swagger-ui/**",  // Swagger ресурси
-//                                        "/swagger-ui.html" // Swagger HTML
-//                        ).permitAll()
-//                        .anyRequest().authenticated()
-//                )
-//                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
-//        return http.build();
-//    }
-//@Bean
-//public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-//    http
-//            .csrf(csrf -> csrf.disable()) // Disable CSRF for testing
-//            .authorizeHttpRequests(auth -> auth
-//                    .requestMatchers(
-//                            "/static/**",
-//                            "/v3/api-docs/**", // OpenAPI JSON
-//                            "/swagger-ui/**",  // Swagger ресурси
-//                            "/swagger-ui.html" // Swagger HTML
-//                                     ).permitAll() // Allow access to static files
-//                    .requestMatchers("/**").permitAll() // Allow all other requests
-//            )
-//            .httpBasic(); // Use basic authentication
-//
-//    return http.build();
-//}
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http
+                .csrf().disable()
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers(
+                        "/",
+                        "/api/auth/**",
+                        "/css/**",
+                        "/js/**",
+                        "/actuator/**",
+                        "/register",
+                        "/actuator",
+                        "/login",
+                                "/static/**",
+                                        "/v3/api-docs/**",
+                                        "/swagger-ui/**",
+                                        "/swagger-ui.html"
+                        ).permitAll()
+                        .anyRequest().authenticated()
+                )
+                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
+        return http.build();
+    }
 @Bean
 public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     http
-            .csrf(csrf -> csrf.disable()) // Вимкнути CSRF
+            .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
-                    .anyRequest().permitAll() // Дозволити доступ до всіх ресурсів
+                    .requestMatchers(
+                            "/static/**",
+                            "/v3/api-docs/**",
+                            "/swagger-ui/**",
+                            "/swagger-ui.html"
+                                     ).permitAll()
+                    .requestMatchers("/**").permitAll()
+            )
+            .httpBasic();
+
+    return http.build();
+}
+
+ */
+@Bean
+public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    http
+            .csrf(csrf -> csrf.disable())
+            .authorizeHttpRequests(auth -> auth
+                    .anyRequest().permitAll()
             );
 
     return http.build();

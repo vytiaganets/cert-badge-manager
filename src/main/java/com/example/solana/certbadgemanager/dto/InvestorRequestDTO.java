@@ -24,7 +24,6 @@ public class InvestorRequestDTO {
 
     private String description;
 
-    // Getters and Setters
     public String getName() {
         return name;
     }

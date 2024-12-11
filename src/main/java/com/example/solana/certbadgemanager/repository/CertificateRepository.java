@@ -7,8 +7,10 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.UUID;
+
 @Repository
-public interface CertificateRepository extends JpaRepository<Certificate, String>{
+public interface CertificateRepository extends JpaRepository<Certificate, UUID>{
 
     @Modifying
     @Query("DELETE FROM Certificate c WHERE c.id = :id")

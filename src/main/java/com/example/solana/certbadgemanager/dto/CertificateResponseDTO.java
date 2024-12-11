@@ -2,6 +2,8 @@ package com.example.solana.certbadgemanager.dto;
 
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 @Data
 @Getter
 @Setter
@@ -12,7 +14,7 @@ public class CertificateResponseDTO {
     private String id;
     private String title;
     private String description;
-    private String userId;
+    private Long userId;
     private String recipient;
     private String blockchainTransactionId;
     private String status;
@@ -23,4 +25,5 @@ public class CertificateResponseDTO {
         this.title = title;
         this.description = description;
     }
+
 }

@@ -10,5 +10,6 @@ import lombok.*;
 public class BadgeRequestDTO {
     private String name;
     private String description;
-    private String issueDate;
+    private String issuer;
+    private String issuedTo;
 }

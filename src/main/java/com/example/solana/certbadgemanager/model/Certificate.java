@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.UUID;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -16,7 +17,8 @@ import java.util.List;
 @Entity
 public class Certificate {
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID id;
     private String title;
     private String description;
     private String awardedTo;
@@ -31,4 +33,5 @@ public class Certificate {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
 }

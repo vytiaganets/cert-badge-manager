@@ -7,7 +7,7 @@
 
     <changeSet id="1" author="Andrii">
         <createTable tableName="certificates">
-            <column name="id" type="BIGINT" autoIncrement="true">
+            <column name="id" type="UUID" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="certificate_name" type="VARCHAR(255)">

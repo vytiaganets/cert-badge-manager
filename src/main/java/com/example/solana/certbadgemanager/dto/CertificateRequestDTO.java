@@ -10,5 +10,4 @@ import lombok.*;
 public class CertificateRequestDTO {
     private String title;
     private String description;
-    private String issueDate;
 }

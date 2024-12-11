@@ -19,7 +19,7 @@ public class TokenomicsTransactionService {
 
         DefaultTransactionDefinition def = new DefaultTransactionDefinition();
         def.setName("TokenomicsTransaction");
-        def.setPropagationBehavior(DefaultTransactionDefinition.PROPAGATION_REQUIRED); // Транзакція буде використовувати існуючу, якщо вона є
+        def.setPropagationBehavior(DefaultTransactionDefinition.PROPAGATION_REQUIRED);
 
         TransactionStatus status = transactionManager.getTransaction(def);
         try {

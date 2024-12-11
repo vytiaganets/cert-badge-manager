@@ -26,19 +26,15 @@ public class JwtAuthFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request,
                                     HttpServletResponse response,
                                     FilterChain filterChain) throws ServletException, IOException {
-        // Obtaining a token from a request
         String token = getJwtFromRequest(request);
 
         try {
             if (token != null && validateToken(token)) {
-                // We receive user data from the token
                 Claims claims = getClaimsFromToken(token);
                 String username = claims.getSubject();
 
-                // We create UserDetails (or download from the database if necessary)
                 UserDetails userDetails = new User(username, "", Collections.emptyList());
 
-                // Add authentication to the SecurityContext
                 UsernamePasswordAuthenticationToken authentication =
                         new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
                 SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -49,14 +45,13 @@ public class JwtAuthFilter extends OncePerRequestFilter {
             return;
         }
 
-        // We pass the request on through the filters
         filterChain.doFilter(request, response);
     }
 
     private String getJwtFromRequest(HttpServletRequest request) {
         String bearerToken = request.getHeader("Authorization");
         if (bearerToken != null && bearerToken.startsWith("Bearer ")) {
-            return bearerToken.substring(7); // Видаляємо "Bearer " для отримання токена
+            return bearerToken.substring(7);
         }
         return null;
     }
@@ -68,7 +63,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
                     .parseClaimsJws(token);
             return true;
         } catch (Exception e) {
-            return false; // Токен недійсний
+            return false;
         }
     }
 

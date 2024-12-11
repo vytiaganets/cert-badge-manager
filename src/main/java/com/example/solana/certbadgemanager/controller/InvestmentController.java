@@ -28,7 +28,7 @@ public class InvestmentController {
         return ResponseEntity.ok(investorResponse);
     }
 
-    @GetMapping("/investors")
+    @GetMapping("/allinvestors")
     public ResponseEntity<List<InvestorResponseDTO>> getAllInvestors() {
         List<InvestorResponseDTO> investors = investmentService.getAllInvestors();
         return ResponseEntity.ok(investors);
@@ -42,7 +42,7 @@ public class InvestmentController {
     }
 
 
-    @PostMapping("/allocations")
+    @PostMapping("/createallocations")
     public ResponseEntity<InvestmentAllocationResponseDTO> createInvestmentAllocation(
             @RequestBody InvestmentAllocationRequestDTO investmentAllocationRequestDTO) {
         InvestmentAllocationResponseDTO allocationResponse = investmentService.createInvestmentAllocation(investmentAllocationRequestDTO);
