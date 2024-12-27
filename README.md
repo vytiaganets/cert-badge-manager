@@ -21,19 +21,19 @@ The primary goal of the project is to create a robust blockchain-based system fo
 **Description of Completed Tasks:**
 
 Development of an initial token on the Solana blockchain.
-![](../../../Desktop/Знімок екрана 2024-12-27 о 14.06.53.png)
+
 Creation of foundational smart contracts for NFT badges.
 
 Implementation of a Minimum Viable Product (MVP) for badge creation and issuance.
-
+![](1.png)
 **List of Accomplished Tasks:**
 
 Built and deployed token contract on the Solana blockchain.
-![](../../../Desktop/Знімок екрана 2024-12-27 о 14.01.23.png)
+![](3.png)
 Designed the basic UI for badge creation.
 
 Conducted initial testing for badge issuance and validation.
-
+![](2.png)
 **GitHub Link:**
 
 Repository containing all completed tasks and code:
