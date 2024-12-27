@@ -5,13 +5,19 @@
         xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
         http://www.liquibase.org/xml/ns/dbchangelog-ext https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
-
+    <include file="db/changelog/changelogs/authrequest-changelog.xml"/>
     <include file="db/changelog/changelogs/tokenomics-changelog.xml"/>
+    <include file="db/changelog/changelogs/users-changelog.xml"/>
+    <include file="db/changelog/changelogs/rewards-changelog.xml"/>
     <include file="db/changelog/changelogs/badges-changelog.xml"/>
     <include file="db/changelog/changelogs/certificates-changelog.xml"/>
     <include file="db/changelog/changelogs/tokens-changelog.xml"/>
+    <include file="db/changelog/changelogs/nft-changelog.xml"/>
     <include file="db/changelog/changelogs/investors-changelog.xml"/>
+    <include file="db/changelog/changelogs/investments-changelog.xml"/>
     <include file="db/changelog/changelogs/investmentallocations-changelog.xml"/>
-    <include file="db/changelog/changelogs/users-changelog.xml"/>
+    <include file="db/changelog/changelogs/gameachievement-changelog.xml"/>
+    <include file="db/changelog/changelogs/playerprogress-changelog.xml"/>
+    <include file="db/changelog/changelogs/wallets-changelog.xml"/>
 
 </databaseChangeLog>

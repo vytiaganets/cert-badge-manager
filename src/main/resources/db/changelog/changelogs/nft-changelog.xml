@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="1-create-nfts-table" author="Andrii">
+        <createTable tableName="nfts">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="token_id" type="VARCHAR(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="owner_wallet" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="metadata_uri" type="VARCHAR(512)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="TEXT"/>
+            <column name="image_url" type="VARCHAR(512)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creator_address" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <changeSet id="2-insert-nfts-data" author="Andrii">
+        <insert tableName="nfts">
+            <column name="token_id" value="TOKEN123"/>
+            <column name="owner_wallet" value="0xABC123DEF456"/>
+            <column name="metadata_uri" value="https://example.com/metadata/token123"/>
+            <column name="name" value="Genesis NFT"/>
+            <column name="description" value="The first NFT in the collection."/>
+            <column name="image_url" value="https://example.com/images/token123.png"/>
+            <column name="creator_address" value="0xCREATOR123ABC"/>
+        </insert>
+        <insert tableName="nfts">
+            <column name="token_id" value="TOKEN124"/>
+            <column name="owner_wallet" value="0xDEF456ABC123"/>
+            <column name="metadata_uri" value="https://example.com/metadata/token124"/>
+            <column name="name" value="Epic NFT"/>
+            <column name="description" value="An exclusive NFT with epic features."/>
+            <column name="image_url" value="https://example.com/images/token124.png"/>
+            <column name="creator_address" value="0xCREATOR456DEF"/>
+        </insert>
+    </changeSet>
+
+
+</databaseChangeLog>

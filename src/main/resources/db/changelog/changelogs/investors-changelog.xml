@@ -4,7 +4,6 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
-
     <changeSet id="1" author="Andrii">
         <createTable tableName="investors">
             <column name="id" type="BIGINT" autoIncrement="true">
@@ -23,9 +22,12 @@
                 <constraints nullable="false"/>
             </column>
             <column name="notes" type="TEXT"/>
+            <!-- Додано нове поле description -->
+            <column name="description" type="VARCHAR(255)" />
         </createTable>
     </changeSet>
 
+    <!-- Зміна 2: Вставка даних в таблицю 'investors' -->
     <changeSet id="2" author="Andrii">
         <insert tableName="investors">
             <column name="name" value="John Doe"/>
@@ -33,6 +35,7 @@
             <column name="investment_amount" value="100000.00"/>
             <column name="investment_date" value="2024-01-15"/>
             <column name="notes" value="Key investor for initial seed funding."/>
+            <column name="description" value="Investor focused on seed round funding."/> <!-- Додано значення для description -->
         </insert>
         <insert tableName="investors">
             <column name="name" value="Jane Smith"/>
@@ -40,6 +43,7 @@
             <column name="investment_amount" value="50000.00"/>
             <column name="investment_date" value="2024-02-10"/>
             <column name="notes" value="Additional funding for marketing campaigns."/>
+            <column name="description" value="Investor supporting the marketing initiatives."/> <!-- Додано значення для description -->
         </insert>
     </changeSet>
 

@@ -4,33 +4,49 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
-
     <changeSet id="1" author="Andrii">
-        <createTable tableName="tokenomics">
+        <createTable tableName="tokens">
             <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="token_name" type="VARCHAR(255)">
-                <constraints nullable="false" unique="true"/>
-            </column>
-            <column name="total_supply" type="DECIMAL(20, 6)">
+            <column name="blockchain" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="circulating_supply" type="DECIMAL(20, 6)"/>
-            <column name="reserved_for_rewards" type="DECIMAL(20, 6)"/>
-            <column name="transaction_fee_percentage" type="DECIMAL(5, 2)"/>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="symbol" type="VARCHAR(10)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="total_supply" type="DECIMAL(20,6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="circulating_supply" type="DECIMAL(20,6)"/>
+            <column name="creation_date" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
             <column name="description" type="VARCHAR(500)"/>
         </createTable>
     </changeSet>
 
     <changeSet id="2" author="Andrii">
-        <insert tableName="tokenomics">
-            <column name="token_name" value="MyToken"/>
-            <column name="total_supply" valueNumeric="1000000.000000"/>
-            <column name="circulating_supply" valueNumeric="500000.000000"/>
-            <column name="reserved_for_rewards" valueNumeric="200000.000000"/>
-            <column name="transaction_fee_percentage" valueNumeric="2.50"/>
-            <column name="description" value="This is a test token for demonstration purposes."/>
+        <insert tableName="tokens">
+            <column name="blockchain" value="Solana"/>
+            <column name="name" value="Token One"/>
+            <column name="symbol" value="TOK1"/>
+            <column name="total_supply" value="1000000.000000"/>
+            <column name="circulating_supply" value="500000.000000"/>
+            <column name="creation_date" valueDate="2024-01-01T00:00:00"/>
+            <column name="description" value="The first token in our system."/>
+        </insert>
+        <insert tableName="tokens">
+            <column name="blockchain" value="Binance Smart Chain"/>
+            <column name="name" value="Token Two"/>
+            <column name="symbol" value="TOK2"/>
+            <column name="total_supply" value="500000.000000"/>
+            <column name="circulating_supply" value="250000.000000"/>
+            <column name="creation_date" valueDate="2024-02-01T00:00:00"/>
+            <column name="description" value="The second token with lower supply."/>
         </insert>
     </changeSet>
 

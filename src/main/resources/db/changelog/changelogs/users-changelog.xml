@@ -4,7 +4,6 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
-
     <changeSet id="1" author="Andrii">
         <createTable tableName="users">
             <column name="id" type="BIGINT" autoIncrement="true">
@@ -31,13 +30,13 @@
             <column name="username" value="admin"/>
             <column name="email" value="admin@example.com"/>
             <column name="password" value="$2a$10$7jqPzX8pO4uVz/Q6/UL8ie8DOVMxQV5kx.vzYxI/BwE/cW0CI3iFa"/> <!-- Encrypted password -->
-            <column name="created_at" valueDate="2024-01-01T00:00:00"/>
+            <column name="created_at" value="2024-01-01T00:00:00"/>
         </insert>
         <insert tableName="users">
             <column name="username" value="user1"/>
             <column name="email" value="user1@example.com"/>
             <column name="password" value="$2a$10$e9VPHqcH9/4Ko0qsO6UwWeuSRllk/F5Hg3.eXP13R6NQqDZTn.xBi"/> <!-- Encrypted password -->
-            <column name="created_at" valueDate="2024-02-01T00:00:00"/>
+            <column name="created_at" value="2024-02-01T00:00:00"/>
         </insert>
     </changeSet>
 

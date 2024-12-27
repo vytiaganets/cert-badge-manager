@@ -4,10 +4,9 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
-
     <changeSet id="1" author="Andrii">
         <createTable tableName="certificates">
-            <column name="id" type="UUID" autoIncrement="true">
+            <column name="id" valueComputed="AUTO_INCREMENT">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="certificate_name" type="VARCHAR(255)">

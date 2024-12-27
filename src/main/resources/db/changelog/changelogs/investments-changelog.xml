@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="1" author="Andrii">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="investments"/>
+            </not>
+        </preConditions>
+        <createTable tableName="investments">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="amount" type="DECIMAL(18, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="investment_date" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <!-- Додаємо поле investor_id, яке може бути NULL -->
+            <column name="investor_id" type="BIGINT">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- ChangeSet 2: Add foreign key for user_id -->
+    <changeSet id="2" author="Andrii">
+        <addForeignKeyConstraint
+                baseTableName="investments"
+                baseColumnNames="user_id"
+                constraintName="fk_investments_user"
+                referencedTableName="users"
+                referencedColumnNames="id"
+                onDelete="CASCADE"/>
+    </changeSet>
+
+    <!-- ChangeSet 3: Add index to status column -->
+    <changeSet id="3" author="Andrii">
+        <createIndex tableName="investments" indexName="idx_investments_status">
+            <column name="status"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ChangeSet 4: Insert initial data into investments table -->
+    <changeSet id="4" author="Andrii">
+        <insert tableName="investments">
+            <column name="user_id" value="1"/>
+            <column name="investor_id" value="1"/> <!-- Додаємо значення для investor_id -->
+            <column name="amount" value="1000.00"/>
+            <column name="investment_date" value="2024-01-01 12:00:00"/>
+            <column name="status" value="ACTIVE"/>
+        </insert>
+        <insert tableName="investments">
+            <column name="user_id" value="2"/>
+            <column name="investor_id" value="2"/> <!-- Додаємо значення для investor_id -->
+            <column name="amount" value="2000.00"/>
+            <column name="investment_date" value="2024-02-01 12:00:00"/>
+            <column name="status" value="CLOSED"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

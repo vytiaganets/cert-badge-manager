@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="1-create-player-progress-table" author="Andrii">
+        <createTable tableName="player_progress">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="player_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="game_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="current_level" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="experience_points" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="total_points" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <changeSet id="2-create-game-achievement-table" author="Andrii">
+        <createTable tableName="game_achievement">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="player_progress_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="achievement_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="points" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date_achieved" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="3-add-foreign-key-to-game-achievement" author="Andrii">
+        <addForeignKeyConstraint
+                baseTableName="game_achievement"
+                baseColumnNames="player_progress_id"
+                referencedTableName="player_progress"
+                referencedColumnNames="id"
+                constraintName="fk_game_achievement_player_progress"/>
+    </changeSet>
+
+    <changeSet id="4-insert-player-progress-data" author="Andrii">
+        <insert tableName="player_progress">
+            <column name="player_id" value="player001"/>
+            <column name="game_id" value="game001"/>
+            <column name="current_level" value="10"/>
+            <column name="experience_points" value="1500"/>
+            <column name="last_updated" value="2024-12-14T12:00:00"/>
+            <column name="total_points" value="500"/>
+        </insert>
+        <insert tableName="player_progress">
+            <column name="player_id" value="player002"/>
+            <column name="game_id" value="game002"/>
+            <column name="current_level" value="5"/>
+            <column name="experience_points" value="800"/>
+            <column name="last_updated" value="2024-12-13T18:30:00"/>
+            <column name="total_points" value="300"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="1" author="Andrii">
+        <createTable tableName="rewards">
+            <column name="reward_id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="player_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="amount" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="TEXT"/>
+            <column name="points" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="reward_type" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_redeemable" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="redeemed" type="BOOLEAN" defaultValue="false"/>
+            <column name="created_at" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2" author="Andrii">
+        <createTable tableName="player_rewards">
+            <column name="player_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="reward_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="assigned_at" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="3" author="avywhale-team">
+        <createIndex tableName="rewards" indexName="idx_rewards_name">
+            <column name="name"/>
+        </createIndex>
+
+        <createIndex tableName="player_rewards" indexName="idx_player_rewards_player_reward">
+            <column name="player_id"/>
+            <column name="reward_id"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="4" author="Andrii">
+        <insert tableName="rewards">
+            <column name="reward_id" value="1"/>
+            <column name="name" value="Gold Trophy"/>
+            <column name="description" value="Awarded for achieving the highest score."/>
+            <column name="points" value="500"/>
+            <column name="reward_type" value="trophy"/>
+            <column name="is_redeemable" valueNumeric="0"/>
+            <column name="redeemed" valueNumeric="0"/>
+            <column name="created_at" value="2024-12-14 12:00:00"/>
+            <column name="player_id" value="12345"/>
+            <column name="amount" value="100"/>
+        </insert>
+
+        <insert tableName="rewards">
+            <column name="reward_id" value="2"/>
+            <column name="name" value="Silver Trophy"/>
+            <column name="description" value="Awarded for being the runner-up."/>
+            <column name="points" value="300"/>
+            <column name="reward_type" value="trophy"/>
+            <column name="is_redeemable" valueNumeric="0"/>
+            <column name="redeemed" valueNumeric="0"/>
+            <column name="created_at" value="2024-12-14 12:00:00"/>
+            <column name="player_id" value="67890"/>
+            <column name="amount" value="50"/>
+        </insert>
+
+        <insert tableName="rewards">
+            <column name="reward_id" value="3"/>
+            <column name="name" value="Bronze Trophy"/>
+            <column name="description" value="Awarded for finishing in third place."/>
+            <column name="points" value="200"/>
+            <column name="reward_type" value="trophy"/>
+            <column name="is_redeemable" valueNumeric="0"/>
+            <column name="redeemed" valueNumeric="0"/>
+            <column name="created_at" value="2024-12-14 12:00:00"/>
+            <column name="player_id" value="11223"/>
+            <column name="amount" value="30"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>
