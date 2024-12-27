@@ -115,6 +115,6 @@ Regular audits of smart contracts.
 
 **6. References and Links**
 
-**GitHub Repository:** https:
-**WhiteBit Documentation:** https:
+**GitHub Repository:** https://github.com/vytiaganets/cert-badge-manager
+**WhiteBit Documentation:** https://docs.whitebit.com
 **Blockchain Security Best Practices:** https://101blockchains.com
